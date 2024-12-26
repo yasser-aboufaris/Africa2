@@ -9,18 +9,15 @@
     <title>Document</title>
 </head>
 <body>
-<nav class="shadow-md flex justify-between items-center bg-gray-800 p-4">
-        <!-- Logo -->
-        <div class="text-white text-2xl font-bold">
-            <a href="#">AfrikaGeo</a>
-        </div>
+    <?php
+    include "../htmlCom/nav.php";
+    ?>
+    <?php
+    include "../htmlCom/hero.php";
+    ?>
+    <?php
+    include "../htmlCom/footer.php";
+    ?>
 
-        <!-- Navigation Links -->
-        <ul class="flex space-x-6 text-white">
-            <li><a href="#" class="hover:text-orange-500">Home</a></li>
-            <li><a href="#" class="hover:text-orange-500">Countries</a></li>
-            <li><a href="#" class="hover:text-orange-500">Cities</a></li>
-        </ul>
-    </nav>
 </body>
 </html>

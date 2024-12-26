@@ -1,23 +1,27 @@
 <?php
 
-define('DB_HOST','localhost');
-define('DB_USER','root');
-define('DB_PASSWORD','');
-define('DB_DATABASE','africa2');
 
 class Connection
 {
     public $conn; 
+    private $serverName = "localhost";
+    private $username = "root";
+    private $password = "";
 
     public function __construct()
     {
-        $this->conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE); // Assign the connection to the class property
+        
+        
 
-        if ($this->conn->connect_error) {
-            die ("<h1>Database Connection Failed</h1>");
-        }
-      
-    }
+try {
+    $conn = new PDO("mysql:host=$this->serverName", $this->username, $this->password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} 
+catch(PDOException $e) {
+    echo "error";
 }
 
-?>
+$conn = null;
+
+    }
+}

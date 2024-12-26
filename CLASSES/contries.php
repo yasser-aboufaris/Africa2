@@ -4,10 +4,10 @@ $newConnection = new Connection();
 ?>
 
 <?php class Countries{
-    private $conn = new Connection();
+    private $id;
     private $sqlAfficahge = "select * from countries ";
 
-    private $sqlDelete = "DELETE FROM countries WHERE id=$id";
+
 
     private $sqlModifyPopulation = "";
 
@@ -20,7 +20,7 @@ $newConnection = new Connection();
 
     public function delete(){
         
-
+        
     }
 
         }?>

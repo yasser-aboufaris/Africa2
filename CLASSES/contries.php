@@ -17,10 +17,10 @@ $newConnection = new Connection();
 
     private $sqlAddCountry ="insert into countries ";
     
-
+    
     public function delete(){
         
         
     }
-
+        
         }?>

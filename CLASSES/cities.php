@@ -39,7 +39,7 @@ class Countries {
     }
 
     public function edit($id, $name, $population, $languages) {
-        $query = "UPDATE cities SET name = ?, population = ?, languages = ? WHERE id = ?";
+        $query = "UPDATE cities SET name = ?, type = ?, WHERE id = ?";
         $stmt = $this->db->prepare($query);
         $stmt->execute([$name, $population, $languages, $id]);
     }

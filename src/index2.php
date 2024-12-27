@@ -7,7 +7,6 @@ include "../CLASSES/countries.php";
 $newConnection2 = new Connection();
 $newCountry = new Countries($newConnection2);
 
-// Check login status
 $isLoggedIn = isset($_SESSION['user_id']);
 ?>
 

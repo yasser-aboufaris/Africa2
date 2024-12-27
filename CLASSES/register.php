@@ -1,6 +1,6 @@
 <?php
 include_once 'conn.php';
-
+include "../htmlCom/nav.php";
 class UserRegistration {
     private $conn;
     public $message = "";

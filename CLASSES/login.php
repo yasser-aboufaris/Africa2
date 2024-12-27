@@ -1,6 +1,6 @@
 <?php
 include_once 'conn.php'; 
-
+include "../htmlCom/nav.php";
 class UserAuth {
     private $conn;
     public $error = "";
@@ -31,7 +31,7 @@ class UserAuth {
                     if ($user['role'] === 'Admin') {
                         header("Location: ../src/index.php");
                     } else {
-                        header("Location: ../src/index.php");
+                        header("Location: ../src/index2.php");
                     }
                     exit();
                 } else {

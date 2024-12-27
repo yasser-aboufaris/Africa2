@@ -2,7 +2,6 @@
 session_start();
 include "../htmlCom/nav.php";
 include "../htmlCom/hero.php";
-include "../htmlCom/footer.php";
 include "../CLASSES/countries.php";
 
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['role']) || $_SESSION['role'] !== 'Admin') {
@@ -39,9 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src="https://cdn.tailwindcss.com"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100">
     <div class="container mx-auto px-4 py-8">
@@ -85,7 +84,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             foreach($Country as $row) {
             ?>
                 <div class="bg-black rounded-lg shadow overflow-hidden">
-                    <img class="w-full h-48 object-cover" src="./img/HeroStake.jpg" alt="Country Image" />
                     <div class="p-5">
                         <h5 class="mb-2 text-2xl font-bold text-white">
                             <?= htmlspecialchars($row['name']) ?>
@@ -99,6 +97,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-yellow-700 rounded-lg hover:bg-yellow-800">
                                 Modify
                             </button>
+                            <a href="list.php?id=<?= $row['id'] ?>" class="bg-[#80808048] px-3 py-2 md:px-4 md:py-2 rounded-full hover:bg-[#292929] active:bg-red-700 text-white text-sm md:text-lg font-semibold transition duration-300 btn-primary">
+                                view cities
+                            </a>
                             <form method="POST" class="inline">
                                 <input type="hidden" name="action" value="delete">
                                 <input type="hidden" name="id" value="<?= $row['id'] ?>">
@@ -115,6 +116,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ?>
         </div>
     </div>
+    <?php 
+include "../htmlCom/footer.php";
+ ?>
 
     <script>
         function toggleForm() {

@@ -1,6 +1,6 @@
 <section class="relative h-[30rem] flex items-center justify-center p-3">
    <div class="absolute inset-0">
-      <div class="w-full h-full bg-cover bg-center rounded-2xl" style="background-image: url('../../images/gazel.gif');"></div>
+      <div class="w-full h-full bg-cover bg-center rounded-2xl" style="background-image: url('../images/gazel.gif');"></div>
       <div class="absolute inset-0 bg-black bg-opacity-50 rounded-2xl"></div>
    </div>
 

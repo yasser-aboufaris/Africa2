@@ -1,5 +1,6 @@
 <?php
 include_once("../CLASSES/cities.php");
+include "../htmlCom/nav.php";
 
 session_start();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -36,6 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>City List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -135,8 +138,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     </script>
 </head>
-<body>
-    <h1 style="text-align: center;">City List</h1>
+<body class="mt-[10rem]">
+<h1 style="text-align: center; font-size: 3em; font-weight: bold;">City List</h1>
 
     <div class="container">
         <?php

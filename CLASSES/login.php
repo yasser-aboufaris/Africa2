@@ -31,8 +31,8 @@ class UserAuth {
     public function login($email, $password) {
         if (!empty($email) && !empty($password)) {
             $sql = "SELECT users.id, users.name, users.password, roles.name AS role 
-                    FROM africa_users AS users 
-                    JOIN africa_roles AS roles ON users.role_id = roles.id 
+                    FROM users 
+                    JOIN roles ON users.role_id = roles.id 
                     WHERE users.email = :email";
 
             $stmt = $this->conn->prepare($sql);
@@ -47,10 +47,10 @@ class UserAuth {
                     $_SESSION['username'] = $user['name'];
                     $_SESSION['role'] = $user['role'];
 
-                    if ($user['role'] === 'Chef') {
-                        header("Location: editMenu.php");
+                    if ($user['role'] === 'Admin') {
+                        header("Location: ../src/index.php");
                     } else {
-                        header("Location: menu.php");
+                        header("Location: ../src/index.php");
                     }
                     exit();
                 } else {
@@ -64,6 +64,7 @@ class UserAuth {
         }
     }
 }
+
 
 $database = new Database();
 $userAuth = new UserAuth($database->conn);
@@ -111,17 +112,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </p>
     </div>
 </div>
-
-<footer class="bg-gray-800 text-white py-4 mt-auto">
-    <div class="text-center">
-        <p>&copy; 2023 Gusto. All rights reserved. Design by <a href="http://www.templatewire.com" class="text-blue-400" rel="nofollow">TemplateWire</a>.</p>
-        <div class="mt-2">
-            <a href="#" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
-            <a href="#" class="text-white mx-2"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="text-white mx-2"><i class="fab fa-youtube"></i></a>
-        </div>
-    </div>
-</footer>
-
 </body>
 </html>

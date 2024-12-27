@@ -42,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,16 +51,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 flex flex-col min-h-screen">
-    <nav class="bg-gray-800 p-4 text-white">
-        <div class="container mx-auto flex justify-between">
-            <div>
-                <a href="index.html" class="mr-4 hover:underline">Main</a>
-                <a href="menu.php" class="mr-4 hover:underline">Menu</a>
-                <a href="#team" class="mr-4 hover:underline">Chef</a>
-                <a href="login.php" class="hover:underline">Login</a>
-            </div>
-        </div>
-    </nav>
 
     <div class="flex flex-col justify-center items-center flex-grow">
         <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
@@ -92,11 +81,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
         </div>
     </div>
-
-    <footer class="bg-gray-800 text-white py-4 mt-auto">
-        <div class="text-center">
-            <p>&copy; 2023 Gusto. All rights reserved. Design by <a href="http://www.templatewire.com" class="text-blue-400" rel="nofollow">TemplateWire</a>.</p>
-        </div>
-    </footer>
+    
 </body>
 </html>

@@ -1,12 +1,7 @@
-<?php
-include("conn.php");
-$newConnection = new Connection();
-$newCountry = new Countries($newConnection);
-$newCountry->Read();
-?>
 
 <?php
-class Countries {
+include_once("conn.php");
+class Cities {
     private $db;
 
     public function __construct($db) {
@@ -29,7 +24,7 @@ class Countries {
 
     public function create($name, $population, $languages, $continent) {
         try {
-            $query = "INSERT INTO cities (name, population, languages, continent) VALUES (?, ?, ?, ?)";
+            $query = "INSERT INTO cities (name, population, languages,country_id) VALUES (?, ?, ?, ?)";
             $stmt = $this->db->prepare($query);
             $stmt->execute([$name, $population, $languages, $continent]);
             echo "Country added successfully!";

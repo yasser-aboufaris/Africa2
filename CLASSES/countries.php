@@ -1,7 +1,7 @@
 <?php
 include("conn.php");
-$newConnection = new Connection();
-$newCountry = new Countries($newConnection);
+$newConnection2 = new Connection();
+$newCountry = new Countries($newConnection2);
 $newCountry->Read();
 ?>
 

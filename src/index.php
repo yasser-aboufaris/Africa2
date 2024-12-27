@@ -1,6 +1,5 @@
 <?php
 session_start();
-session_start();
 include "../htmlCom/nav.php";
 include "../htmlCom/hero.php";
 include "../htmlCom/footer.php";
@@ -18,7 +17,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['action'])) {
         switch ($_POST['action']) {
             case 'add':
-                $newCountry->create($_POST['name'], $_POST['population'], $_POST['languages'], 1);
+                $newCountry->create(
+                    $_POST['name'], 
+                    $_POST['population'], 
+                    $_POST['languages'],
+                    $_POST['continent_id'],
+                );
                 break;
             case 'edit':
                 $newCountry->edit($_POST['id'], $_POST['name'], $_POST['population'], $_POST['languages']);
@@ -37,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <script src="https://cdn.tailwindcss.com"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Countries Management</title>
+    <title>Document</title>
 </head>
 <body class="bg-gray-100">
     <div class="container mx-auto px-4 py-8">
@@ -48,26 +52,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </button>
         </div>
 
-        <!-- Add Form -->
         <div id="addForm" class="hidden mb-8 bg-white p-6 rounded-lg shadow">
             <form method="POST" class="space-y-4">
                 <input type="hidden" name="action" value="add">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium mb-1">Name</label>
-                        <input type="text" name="name" class="w-full p-2 border rounded">
+                        <input type="text" name="name" required class="w-full p-2 border rounded">
                     </div>
                     <div>
                         <label class="block text-sm font-medium mb-1">Population</label>
-                        <input type="number" name="population" class="w-full p-2 border rounded">
+                        <input type="number" name="population" required class="w-full p-2 border rounded">
                     </div>
                     <div>
                         <label class="block text-sm font-medium mb-1">Languages</label>
-                        <input type="text" name="languages" class="w-full p-2 border rounded">
+                        <input type="text" name="languages" required class="w-full p-2 border rounded">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium mb-1">Continent</label>
-                        <input type="text" name="continent" class="w-full p-2 border rounded">
+                        <label class="block text-sm font-medium mb-1">Continent ID</label>
+                        <input type="number" name="continent_id" required class="w-full p-2 border rounded">
                     </div>
                 </div>
                 <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
@@ -76,9 +79,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </form>
         </div>
 
-        <!-- Countries Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <?php
+    <?php
             $Country = $newCountry->Read();
             foreach($Country as $row) {
             ?>
@@ -108,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                     </div>
                 </div>
-            <?php 
+    <?php
             }
             ?>
         </div>
@@ -136,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             formElements.name.value = country.name;
             formElements.population.value = country.population;
             formElements.languages.value = country.languages;
-            formElements.continent.value = country.continent;
+            formElements.continent_id.value = country.continent_id;
         }
     </script>
 </body>

@@ -29,14 +29,14 @@ class Countries {
 
     public function create($name, $population, $languages, $continent) {
         try {
-            $query = "INSERT INTO countries (name, population, languages, continent_id) VALUES (?, ?, ?, ?)";
-            $stmt = $this->db->prepare($query);
-            $stmt->execute([$name, $population, $languages, $continent]);
-            echo "Country added successfully!";
+          $query = "INSERT INTO countries (name, population, languages, continent_id) VALUES (?, ?, ?, ?)";
+          $stmt = $this->db->prepare($query);
+          $stmt->execute([$name, $population, $languages, $continent]);
+          echo "Country added successfully!";
         } catch (PDOException $e) {
-            echo "Error creating country: " . $e->getMessage();
+          echo "Error creating country: " . $e->getMessage();
         }
-    }
+      }
 
     public function edit($id, $name, $population, $languages) {
         $query = "UPDATE countries SET name = ?, population = ?, languages = ? WHERE id = ?";

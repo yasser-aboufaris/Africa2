@@ -1,43 +1,50 @@
+<?php
+include("conn.php");
+$newConnection = new Connection();
+$newCountry = new Countries($newConnection);
+?>
 
 <?php
-include_once("conn.php");
-class Cities {
+class Countries {
     private $db;
 
     public function __construct($db) {
         $this->db = $db->conn;
     }
 
-    
 
-    public function read() {
-        $sqlRead = "SELECT * FROM cities";
+
+        public function read($idCountery) {
+        $sqlRead = "SELECT * FROM cities where country_id = :idCountery";
         try {
             $prepared = $this->db->prepare($sqlRead);
+            $prepared->bindParam(':idCountery', $idCountery, PDO::PARAM_INT);
             $prepared->execute();
             return $prepared->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             echo "Error reading countries: " . $e->getMessage();
-            
+
         }
     }
 
-    public function create($name, $population, $languages, $continent) {
+    public function create($name, $description, $type, $countryId) {
         try {
-            $query = "INSERT INTO cities (name, population, languages,country_id) VALUES (?, ?, ?, ?)";
+            $query = "INSERT INTO cities (name, description, type, country_id) VALUES (?, ?, ?, ?)";
             $stmt = $this->db->prepare($query);
-            $stmt->execute([$name, $population, $languages, $continent]);
-            echo "Country added successfully!";
+            $stmt->execute([$name, $description, $type, $countryId]);
+            echo "City added successfully!";
         } catch (PDOException $e) {
-            echo "Error creating country: " . $e->getMessage();
+            echo "Error creating city: " . $e->getMessage();
         }
     }
 
-    public function edit($id, $name, $population, $languages) {
-        $query = "UPDATE cities SET name = ?, type = ?, WHERE id = ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->execute([$name, $population, $languages, $id]);
-    }
+
+public function edit($id, $name, $description, $type) {
+    $query = "UPDATE cities SET name = ?, description = ?, type = ? WHERE id = ?";
+    $stmt = $this->db->prepare($query);
+    $stmt->execute([$name, $description, $type, $id]);
+}
+
 
     public function delete($id) {
         $query = "DELETE FROM cities WHERE id = ?";

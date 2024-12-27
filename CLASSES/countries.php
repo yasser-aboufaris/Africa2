@@ -29,7 +29,7 @@ class Countries {
 
     public function create($name, $population, $languages, $continent) {
         try {
-            $query = "INSERT INTO countries (name, population, languages, continent) VALUES (?, ?, ?, ?)";
+            $query = "INSERT INTO countries (name, population, languages, continent_id) VALUES (?, ?, ?, ?)";
             $stmt = $this->db->prepare($query);
             $stmt->execute([$name, $population, $languages, $continent]);
             echo "Country added successfully!";

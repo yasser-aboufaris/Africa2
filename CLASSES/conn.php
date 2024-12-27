@@ -7,7 +7,7 @@ class Connection
     private $serverName = "localhost";
     private $username = "root";
     private $password = "";
-    private $database = "africa2";
+    private $database = "africa";
 
     public function __construct()
     {

@@ -1,24 +1,5 @@
 <?php
-class Database {
-    private $host = "localhost";
-    private $username = "root";
-    private $password = "";
-    private $dbName = "africa"; 
-    public $conn;
-
-    public function __construct() {
-        $this->connect();
-    }
-
-    private function connect() {
-        try {
-            $this->conn = new PDO("mysql:host={$this->host};dbname={$this->dbName}", $this->username, $this->password);
-            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-            die("Connection failed: " . $e->getMessage());
-        }
-    }
-}
+include_once 'conn.php'; 
 
 class UserAuth {
     private $conn;
@@ -65,8 +46,7 @@ class UserAuth {
     }
 }
 
-
-$database = new Database();
+$database = new Connection(); 
 $userAuth = new UserAuth($database->conn);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -75,6 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $userAuth->login($email, $password);
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

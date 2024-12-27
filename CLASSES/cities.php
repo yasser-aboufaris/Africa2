@@ -1,19 +1,18 @@
 <?php
 include("conn.php");
 $newConnection = new Connection();
-$newCountry = new Countries($newConnection);
-$newCountry->Read();
-?>
+$newCity = new Cities($newConnection);
+$newCity->Read();
 
-<?php
-class Countries{
+
+class Cities{
     private $id;
     private $db;
 
     public function __construct($db){
         $this->db = $db->conn;
     }
-    private $sqlRead = "select * from continents ";
+    private $sqlRead = "select * from cities ";
 
 
 
@@ -23,7 +22,7 @@ class Countries{
 
     private $sqlModifyDescription= "";
 
-    private $sqlAddCountry ="insert into countries ";
+    private $sqlAddCountry ="insert into cities ";
 
     public function Read (){
 
@@ -31,10 +30,17 @@ class Countries{
         $prepared->execute();
 
         $results = $prepared->fetchAll(PDO::FETCH_ASSOC);
-        var_dump($results);
+        return $results;
         
     }
-    
+
+
+    public function edit (){
+        
+    }
+     public function ajoute(){
+
+     }
     
     public function delete(){
         

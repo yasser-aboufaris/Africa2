@@ -17,7 +17,16 @@
     ?>
     <?php
     include "../htmlCom/footer.php";
+    include "../CLASSES/countries.php";
     ?>
-
+    <?php
+    
+   
+    $Country = $newCountry->Read();
+    foreach($Country as $row ){
+        echo $row['name'];
+    }    
+    
+    ?>
 </body>
 </html>

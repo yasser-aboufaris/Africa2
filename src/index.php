@@ -31,7 +31,7 @@
                     </a>
                     <div class="p-5">
                         <a href="#">
-                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><?= $row['name'] ?></h5>
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"><a href="list.php?id=<?= $row['id'] ?>"><?= $row['name'] ?></a></h5>
                         </a>
                         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><?= $row['name'] ?> is a country that uses <?= $row['languages'] ?> as a way to communicate and has <?= $row['population'] ?>  </p>
                         <div class="flex justify-around h-14 w-full">
@@ -52,11 +52,9 @@
                     </div>
                 </div>
 
-        <?php }
-        
-            
- 
-    
+        <?php 
+    }
+
     ?>
 </body>
 </html>
